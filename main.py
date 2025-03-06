@@ -35,23 +35,27 @@ class LogError:
         d_msg = Counter(parsed_logs[:, 0])
         print("\nLog Summary:")
         for key in ["INFO", "ERROR", "WARNING"]:
-            print(f"- {key} messages: {d_msg.get(key, 0)}")
+            print("-" + key + " messages:" + str(d_msg.get(key, 0)))
 
     def top_3_msg(self, parsed_logs):
-        d_msg = Counter(parsed_logs[:, 2]).most_common(3)
+        d_msg = Counter(parsed_logs[:, 2])
         print("\nTop 3 AI Responses:")
-        for i, (response, count) in enumerate(d_msg, start=1):
-            if response == "null":
+        cont = 0
+        for key in d_msg:
+            if key == "null":
                 continue
-            print(f"{i}. \"{response}\" ({count} times)")
+            cont += 1
+            print(str(cont) + ". \"" + key + "\" (" + str(d_msg[key]) + " times )")
 
     def top_error(self, parsed_logs):
-        d_msg = Counter(parsed_logs[:, 1]).most_common(3)
+        d_msg = Counter(parsed_logs[:, 1])
         print("\nMost Common Errors:")
-        for i, (error, count) in enumerate(d_msg, start=1):
-            if error == "null":
+        cont = 0
+        for key in d_msg:
+            if key == "null":
                 continue
-            print(f"{i}. {error} ({count} times)")
+            cont += 1
+            print(str(cont) + ". " + key + " (" + str(d_msg[key]) + " times )")
 
     def process_logs(self):
         self.read_logs()
