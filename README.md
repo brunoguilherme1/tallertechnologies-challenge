@@ -1,6 +1,4 @@
 # tallertechnologies-challenge
-# LogError: Log Parsing and Analysis
-
 ## Description
 
 This Python script reads and processes log files, extracting key information such as log types, AI agent responses, and errors. It then summarizes the data and displays the most frequent AI responses and error messages.
